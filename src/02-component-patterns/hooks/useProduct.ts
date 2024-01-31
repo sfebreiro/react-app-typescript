@@ -29,15 +29,28 @@ export const useProduct = ({onChange, product, value = 0, initialValues}: UsePro
         setCounter(initialValues?.count || value)
     }
 
-    useEffect(() => {
-      isMounted.current = true;
-    }, [])
-    
-    useEffect(() => {
-        if (!isMounted.current) return;
+    useEffect( () => {
 
-        setCounter(value);
-    }, [value])
+        if ( !isMounted.current ) {
+
+            isMounted.current = true;
+    
+            return;
+        };
+    
+        setCounter( value );
+    
+    }, [ value ] );
+
+    // useEffect(() => {
+    //   isMounted.current = true;
+    // }, [])
+    
+    // useEffect(() => {
+    //     if (!isMounted.current) return;
+
+    //     setCounter(value);
+    // }, [value])
 
     
     
